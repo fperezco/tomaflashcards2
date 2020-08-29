@@ -100,24 +100,30 @@
 		<div class="front" *ngIf="currentFace == 'a_verb'">
       <ion-card>
         <ion-card-header>
-          <ion-card-title>{{currentCard.a_verb}}</ion-card-title>
+          <br>
+          <ion-card-title *ngIf="currentCard.a_verb != ''">{{currentCard.a_verb | titlecase}}</ion-card-title>
+          <ion-card-title *ngIf="currentCard.a_verb == ''">{{currentCard.a_mean | titlecase}}</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
         {{currentCard.a_mean}}    
         {{currentCard.a_example}}    
+        <br><br>
         </ion-card-content>
       </ion-card>
 		</div>
 		<div class="back" *ngIf="currentFace == 'b_verb'">
       <ion-card>
         <ion-card-header>
-          <ion-card-title>{{currentCard.b_verb}}</ion-card-title>
+          <br>
+          <ion-card-title *ngIf="currentCard.b_verb != ''">{{currentCard.b_verb | titlecase}}</ion-card-title>
+          <ion-card-title *ngIf="currentCard.b_verb == ''">{{currentCard.b_mean | titlecase}}</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
         {{currentCard.b_mean}}    
-        {{currentCard.b_example}}    
+        {{currentCard.b_example}}   
+        <br><br> 
         </ion-card-content>
       </ion-card>
 		</div>
@@ -125,10 +131,11 @@
 </div>
   
   <div align="center">
-    <ion-button color="success" (click)="nextCardAndSetPuntuation(1)">OK</ion-button>
-    <ion-button color="warning" (click)="nextCardAndSetPuntuation(2)">Medium</ion-button>
-    <ion-button color="danger" (click)="nextCardAndSetPuntuation(3)">Bad</ion-button>
-    {{currentCardIndex + 1 }} / {{cards.length}}
+    <div align="right" style="margin-right: 10px;">{{currentCardIndex + 1 }} / {{cards.length}}</div>
+    <ion-button style="padding-left:5px;padding-right:5px;height: 50px;"color="success" (click)="nextCardAndSetPuntuation(1)">&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;</ion-button>
+    <ion-button style="padding-left:5px;padding-right:5px;height: 50px;" color="warning" (click)="nextCardAndSetPuntuation(2)">&nbsp;&nbsp;Medium&nbsp;&nbsp;</ion-button>
+    <ion-button style="padding-left:5px;padding-right:5px;height: 50px;" color="danger" (click)="nextCardAndSetPuntuation(3)">&nbsp;&nbsp;&nbsp;&nbsp;Bad&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>
+    
   </div>
 
 
@@ -137,8 +144,8 @@
 
 
 <br>
-{{cardCollectionSelected |json}}
+<!-- {{cardCollectionSelected |json}}
 {{cardOrder |json}}
 {{playMode |json}}
-{{diffMode |json}}
+{{diffMode |json}} -->
 </ion-content>

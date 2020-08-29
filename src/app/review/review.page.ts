@@ -39,7 +39,7 @@ export class ReviewPage implements OnInit {
 
     this.sql.openDB(globalVars.databaseName)
     .then( () => {
-      this.sql.dbInstance.executeSql(sentence)
+      this.sql.executeSQLStatement(sentence)
       .then((r) => {
         console.log(r);
         if (r.rows.length > 0) {
@@ -120,7 +120,7 @@ $scope.login = function(firstname,lastname) {
   retrieveCardsCollection(){
     this.sql.openDB(globalVars.databaseName)
     .then( () => {
-      this.sql.dbInstance.executeSql("SELECT * FROM cards_config")
+      this.sql.executeSQLStatement("SELECT * FROM cards_config")
       .then((r) => {
         console.log(r);
         if (r.rows.length > 0) {
@@ -152,7 +152,7 @@ $scope.login = function(firstname,lastname) {
     console.log(sentence);
     this.sql.openDB(globalVars.databaseName)
     .then( () => {
-      this.sql.dbInstance.executeSql(sentence)
+      this.sql.executeSQLStatement(sentence)
       .then(() => {
         this.setNextCard();
       })

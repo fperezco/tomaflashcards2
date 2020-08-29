@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngFor="let card of cards">
-  <ion-card>
+<ion-content>
+  <ion-card *ngFor="let card of cards">
     <ion-card-header>
       <ion-card-title>{{card.card_name}}</ion-card-title>
     </ion-card-header>

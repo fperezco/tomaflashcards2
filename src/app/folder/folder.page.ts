@@ -95,7 +95,6 @@ export class FolderPage implements OnInit {
     if (index === 1){
       let config : any;
       config = this.csvProcessor.getTableConfig(line);
-      console.log("configcfsadfdsafsasfa");
       console.log(config);
       this.addToConfigTable(config);
     }
@@ -126,6 +125,9 @@ export class FolderPage implements OnInit {
 
   insertToTable(tupla:any){
     console.log("insert to table....");
+    // if don't exists , insert it, update method to conserve previous ranks
+    
+
     const statement = "INSERT INTO "+tupla['tableName']+"(a_verb,a_mean, a_example, b_verb, b_mean, b_example, result) VALUES ('"+tupla['a_verb'] +"','"+tupla['a_mean'] +"','"+tupla['a_example'] +"','"+tupla['b_verb'] +"','"+tupla['b_mean'] +"','"+tupla['b_example'] + "','"+tupla['result'] +"')";
     console.log(statement);
     this.sql.executeStatement(statement);
