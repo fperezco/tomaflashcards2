@@ -20,7 +20,8 @@ export class CardsPage implements OnInit {
   retrieveCards(){
     this.sql.openDB(globalVars.databaseName)
     .then( () => {
-      this.sql.dbInstance.executeSql("SELECT * FROM cards_config")
+      //this.sql.dbInstance.executeSql("SELECT * FROM cards_config")
+      this.sql.executeSQLStatement("SELECT * FROM cards_config")
       .then((r) => {
         if (r.rows.length > 0) {
           for (var i = 0; i < r.rows.length; i++) {
@@ -28,7 +29,11 @@ export class CardsPage implements OnInit {
           }
         }
       })
-      .catch(e => console.log("Error on select"+ e));
+      .catch(e =>{
+        console.log("Error on select"+ e);
+        console.log(e);
+      } 
+        );
     });
   }
 }
