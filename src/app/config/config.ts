@@ -1,0 +1,1 @@
+export const databaseName = "tomaFlashCard3.db";

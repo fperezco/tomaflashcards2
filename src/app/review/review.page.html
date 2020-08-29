@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Review</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!-- <ion-list>
+  <ion-item *ngFor="let card of cards">
+    <ion-label>{{card.card_name}}</ion-label>
+    <ion-checkbox name="card" slot="end"></ion-checkbox>
+  </ion-item>
+</ion-list> -->
+
+<div *ngIf="!reviewStarted">
+  <div class="row custom-wrapper"  style="margin-left: 15px;">
+    <div class="col-md-12">
+      <!-- Form starts -->
+      <form #myForm="ngForm" (submit)="submitForm()" novalidate>
+        <h5>1.-Select cards group</h5>
+        <div class="group-gap">
+          <div class="d-block my-3">
+  
+            <div class="custom-control custom-radio" *ngFor="let card of cardCollections">
+              <input id="{{card.id}}" type="radio" class="custom-control-input" [value]='card' name="card" [(ngModel)]="cardCollectionSelected" required>
+              <label class="custom-control-label" for="{{card.id}}"> {{card.card_name}}</label><br><br>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="cardCollectionSelected">
+          <h5>2.-Select order</h5>
+          <div class="group-gap">
+            <div class="d-block my-3">
+  
+              <div class="custom-control custom-radio">
+                <input id="language_a" type="radio" class="custom-control-input" value='a_verb' name="language" [(ngModel)]="cardOrder" required>
+                <label class="custom-control-label" for="language_a"> {{cardCollectionSelected.language_a}} => {{cardCollectionSelected.language_b}}</label><br><br>
+                <input id="language_b" type="radio" class="custom-control-input" value='b_verb' name="language" [(ngModel)]="cardOrder" required>
+                <label class="custom-control-label" for="language_b"> {{cardCollectionSelected.language_b}} => {{cardCollectionSelected.language_a}}</label><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div *ngIf="cardOrder">
+          <h5>3.-Select play mode</h5>
+          <div class="group-gap">
+            <div class="d-block my-3">
+  
+              <div class="custom-control custom-radio">
+                <input id="mode_1" type="radio" class="custom-control-input" value='1' name="mode_1" [(ngModel)]="playMode" required>
+                <label class="custom-control-label" for="mode_1"> Random </label><br><br>
+                <input id="mode_2" type="radio" class="custom-control-input" value='2' name="mode_2" [(ngModel)]="playMode" required>
+                <label class="custom-control-label" for="mode_2"> Alphabetical order </label><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="playMode">
+          <h5>3.- Difficulty</h5>
+          <div class="group-gap">
+            <div class="d-block my-3">
+  
+              <div class="custom-control custom-radio">
+                <input id="diff_0" type="radio" class="custom-control-input" value='0' name="diff_0" [(ngModel)]="diffMode" required>
+                <label class="custom-control-label" for="diff_0"> All </label><br><br>
+                <input id="diff_1" type="radio" class="custom-control-input" value='1' name="diff_1" [(ngModel)]="diffMode" required>
+                <label class="custom-control-label" for="diff_1"> Easy </label><br><br>
+                <input id="diff_2" type="radio" class="custom-control-input" value='2' name="diff_2" [(ngModel)]="diffMode" required>
+                <label class="custom-control-label" for="diff_2"> Medium </label><br><br>
+                <input id="diff_3" type="radio" class="custom-control-input" value='3' name="diff_3" [(ngModel)]="diffMode" required>
+                <label class="custom-control-label" for="diff_3"> Hard </label><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+          <!-- Submit Button -->
+          <ion-button type="submit" color="primary" [disabled]="!cardCollectionSelected || !cardOrder || !playMode || !diffMode">Iniciar Review</ion-button>
+  
+      </form><!-- Form ends -->
+  
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="reviewStarted">
+<br>
+<br>
+
+<!-- <div class="flip-container" ontouchstart="this.classList.toggle('hover');"> -->
+<div class="flip-container" (click)="flipCard()">
+	<div class="flipper">
+		<div class="front" *ngIf="currentFace == 'a_verb'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{currentCard.a_verb}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+        {{currentCard.a_mean}}    
+        {{currentCard.a_example}}    
+        </ion-card-content>
+      </ion-card>
+		</div>
+		<div class="back" *ngIf="currentFace == 'b_verb'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{currentCard.b_verb}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+        {{currentCard.b_mean}}    
+        {{currentCard.b_example}}    
+        </ion-card-content>
+      </ion-card>
+		</div>
+	</div>
+</div>
+  
+  <div align="center">
+    <ion-button color="success" (click)="nextCardAndSetPuntuation(1)">OK</ion-button>
+    <ion-button color="warning" (click)="nextCardAndSetPuntuation(2)">Medium</ion-button>
+    <ion-button color="danger" (click)="nextCardAndSetPuntuation(3)">Bad</ion-button>
+    {{currentCardIndex + 1 }} / {{cards.length}}
+  </div>
+
+
+</div>
+
+
+
+<br>
+{{cardCollectionSelected |json}}
+{{cardOrder |json}}
+{{playMode |json}}
+{{diffMode |json}}
+</ion-content>

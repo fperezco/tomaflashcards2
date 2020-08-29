@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let card of cards">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{card.card_name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{card.language_a}} / {{card.language_b}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
