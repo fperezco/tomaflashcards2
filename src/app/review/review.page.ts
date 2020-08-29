@@ -15,6 +15,7 @@ export class ReviewPage implements OnInit {
   cardOrder: any;
   playMode: any;
   diffMode: any;
+  seenMode: any;
   reviewStarted = false;
   cards: any;
   currentCard: any;
@@ -75,12 +76,13 @@ export class ReviewPage implements OnInit {
       order = "ORDER BY " + this.cardOrder;
     }
     if (this.diffMode != 0){
-      sentence = "SELECT * FROM "+ this.cardCollectionSelected.card_table + " WHERE result=" + this.diffMode + " " + order;
+      sentence = "SELECT * FROM "+ this.cardCollectionSelected.card_table + " WHERE result=" + this.diffMode + " and viewed <=" + this.seenMode;
     }
     else{
-      sentence = "SELECT * FROM "+ this.cardCollectionSelected.card_table + " " + order;
+      sentence = "SELECT * FROM "+ this.cardCollectionSelected.card_table +" WHERE viewed <=" + this.seenMode;
     }
 
+    sentence = sentence + " " + order;
     return sentence;
   }
   
@@ -148,7 +150,8 @@ $scope.login = function(firstname,lastname) {
 
   savePuntuationAndNextCard(puntuation){
 
-    let sentence = "UPDATE "+ this.cardCollectionSelected.card_table + " SET result="+puntuation+" WHERE id="+this.currentCard.id;
+    let viewed = this.currentCard.viewed + 1;
+    let sentence = "UPDATE "+ this.cardCollectionSelected.card_table + " SET result="+puntuation+",viewed="+viewed+" WHERE id="+this.currentCard.id;
     console.log(sentence);
     this.sql.openDB(globalVars.databaseName)
     .then( () => {

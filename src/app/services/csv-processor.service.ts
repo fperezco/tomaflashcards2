@@ -49,6 +49,7 @@ export class CsvProcessorService {
     tupla['b_mean'] = res[4];
     tupla['b_example'] = res[5];
     tupla['result'] = 1;
+    tupla['viewed'] = 0;
     return tupla;
   }
 }
