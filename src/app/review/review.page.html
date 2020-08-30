@@ -51,17 +51,17 @@
             <div class="d-block my-3">
   
               <div class="custom-control custom-radio">
-                <input id="mode_1" type="radio" class="custom-control-input" value='1' name="mode_1" [(ngModel)]="playMode" required>
-                <label class="custom-control-label" for="mode_1"> Random </label><br><br>
                 <input id="mode_2" type="radio" class="custom-control-input" value='2' name="mode_2" [(ngModel)]="playMode" required>
                 <label class="custom-control-label" for="mode_2"> Alphabetical order </label><br><br>
+                <input id="mode_1" type="radio" class="custom-control-input" value='1' name="mode_1" [(ngModel)]="playMode" required>
+                <label class="custom-control-label" for="mode_1"> Random </label><br><br>
               </div>
             </div>
           </div>
         </div>
   
         <div *ngIf="playMode">
-          <h5>3.- Difficulty</h5>
+          <h5>4.- Difficulty</h5>
           <div class="group-gap">
             <div class="d-block my-3">
   
@@ -81,7 +81,7 @@
 
 
         <div *ngIf="diffMode">
-          <h5>3.- Visibility</h5>
+          <h5>5.- Visibility</h5>
           <div class="group-gap">
             <div class="d-block my-3">
   
@@ -166,9 +166,6 @@
 
 
 <br>
-{{ currentCard | json}}<br>
-current card config:
-{{ currentCardConfig | json}}
 <br>
 <!-- {{cardCollectionSelected |json}}
 {{cardOrder |json}}

@@ -172,7 +172,7 @@ export class ReviewPage implements OnInit {
     }
     else{
       if ( this.seenMode != 100){
-        sentence = sentence + 'WHERE' + viewed;
+        sentence = sentence + ' WHERE' + viewed;
       }
     }
     sentence = sentence + ' ' + order;
