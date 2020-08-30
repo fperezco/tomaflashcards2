@@ -39,7 +39,7 @@ export class FolderPage implements OnInit {
       this.sql.openDB(this.databaseName)
       .then(() =>{
         console.log("database initialized, create config table..");
-        this.sql.executeStatement('CREATE TABLE IF NOT EXISTS cards_config (id INTEGER PRIMARY KEY AUTOINCREMENT,  card_name TEXT, card_table TEXT, language_a TEXT, language_b TEXT,elements INTEGER DEFAULT 0)');
+        this.sql.executeStatement('CREATE TABLE IF NOT EXISTS cards_config (id INTEGER PRIMARY KEY AUTOINCREMENT,  card_name TEXT, card_table TEXT, language_a TEXT, language_b TEXT,elements INTEGER DEFAULT 0,most_viewed INTEGER DEFAULT 0)');
       })
       .then(() => {
         console.log("tabla creada, insertamos...");
@@ -130,7 +130,7 @@ export class FolderPage implements OnInit {
       }
       else {
         //insert it
-        const statement = "INSERT INTO cards_config(card_name,card_table,language_a,language_b,elements) VALUES ('"+config['cardName'] +"','"+config['tableName'] +"','"+config['languageA'] +"','"+config['languageB'] +"',"+numberOfLines +")";
+        const statement = "INSERT INTO cards_config(card_name,card_table,language_a,language_b,elements,most_viewed) VALUES ('"+config['cardName'] +"','"+config['tableName'] +"','"+config['languageA'] +"','"+config['languageB'] +"',"+numberOfLines +","+config['most_viewed'] +")";
         console.log(statement);
         this.sql.executeStatement(statement);
       }

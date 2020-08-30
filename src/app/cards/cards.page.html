@@ -5,10 +5,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let card of cards">
+  <ion-card *ngFor="let card of cardsCollections">
     <ion-card-header>
       <ion-card-title>{{card.card_name}}</ion-card-title>
-      <ion-card-subtitle>{{card.elements}} elements</ion-card-subtitle>
+      <ion-card-subtitle>
+        <table>
+          <tr>
+            <td><ion-icon name="list" style="font-size: 25px;"></ion-icon>&nbsp; </td>
+            <td style="border:1px solid;background-color: gray;padding:3px;color:white;">{{card.elements}}</td>
+            &nbsp;&nbsp;&nbsp;
+            <td><ion-icon name="speedometer" style="font-size: 25px;"></ion-icon>&nbsp; </td>
+            <td style="border:1px solid;background-color: green;padding:3px;color:white">{{card.easy}}</td>
+            <td style="border:1px solid;background-color: orange;padding:3px;color:white">{{card.medium}}</td>
+            <td style="border:1px solid;background-color: red;padding:3px;color:white">{{card.hard}}</td>
+            <td style="border:1px solid;background-color: gray;padding:3px;color:white">{{card.unknown}}</td>
+            &nbsp;&nbsp;&nbsp;
+            <td><ion-icon name="eye" style="font-size: 25px;"></ion-icon>&nbsp; </td>
+            <td style="border:1px solid;background-color: green;padding:3px;color:white">{{card.veryViewed}}</td>
+            <td style="border:1px solid;background-color: orange;padding:3px;color:white">{{card.mediumViewed}}</td>
+            <td style="border:1px solid;background-color: red;padding:3px;color:white">{{card.lessViewed}}</td>
+            <td style="border:1px solid;background-color: gray;padding:3px;color:white">{{card.notViewed}}</td>
+          </tr>
+        </table>
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       {{card.language_a}} / {{card.language_b}}

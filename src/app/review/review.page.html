@@ -86,14 +86,16 @@
             <div class="d-block my-3">
   
               <div class="custom-control custom-radio">
-                <input id="seen_10000" type="radio" class="custom-control-input" value='10000' name="seen_10000" [(ngModel)]="seenMode" required>
-                <label class="custom-control-label" for="seen_10000"> All </label><br><br>
+                <input id="seen_100" type="radio" class="custom-control-input" value='100' name="seen_100" [(ngModel)]="seenMode" required>
+                <label class="custom-control-label" for="seen_100"> All </label><br><br>
                 <input id="seen_0" type="radio" class="custom-control-input" value='0' name="seen_0" [(ngModel)]="seenMode" required>
                 <label class="custom-control-label" for="seen_0"> Not Seen (0) </label><br><br>
-                <input id="seen_3" type="radio" class="custom-control-input" value='3' name="seen_3" [(ngModel)]="seenMode" required>
-                <label class="custom-control-label" for="seen_3"> Not very seen (3) </label><br><br>
-                <input id="seen_5" type="radio" class="custom-control-input" value='5' name="seen_5" [(ngModel)]="seenMode" required>
-                <label class="custom-control-label" for="seen_5"> Medium seen (5) </label><br><br>
+                <input id="seen_25" type="radio" class="custom-control-input" value='25' name="seen_25" [(ngModel)]="seenMode" required>
+                <label class="custom-control-label" for="seen_25"> Not very seen (0-25) </label><br><br>
+                <input id="seen_50" type="radio" class="custom-control-input" value='50' name="seen_50" [(ngModel)]="seenMode" required>
+                <label class="custom-control-label" for="seen_50"> Medium seen (25-75) </label><br><br>
+                <input id="seen_75" type="radio" class="custom-control-input" value='75' name="seen_75" [(ngModel)]="seenMode" required>
+                <label class="custom-control-label" for="seen_75"> Very seen (75-100) </label><br><br>
               </div>
             </div>
           </div>
@@ -164,7 +166,10 @@
 
 
 <br>
-{{ currentCard | json}}
+{{ currentCard | json}}<br>
+current card config:
+{{ currentCardConfig | json}}
+<br>
 <!-- {{cardCollectionSelected |json}}
 {{cardOrder |json}}
 {{playMode |json}}

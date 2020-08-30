@@ -41,7 +41,7 @@ export class CompleteSqlService {
 
   executeSQLStatement(statement){
     console.log("!!!!!!execute statement!!!!!" + statement);
-    console.log("dbinstance = ");
+    console.log("dbinstance = ... ");
     console.log(this.dbInstance);
     return this.dbInstance.executeSql(statement, []);
   }

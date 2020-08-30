@@ -35,6 +35,7 @@ export class CsvProcessorService {
     config['tableName'] = this.tableStructureName;
     config['languageA'] = this.languageA;
     config['languageB'] = this.languageB;
+    config['most_viewed'] = 0;
     return config;
   }
 
@@ -48,7 +49,7 @@ export class CsvProcessorService {
     tupla['b_verb'] = res[3];
     tupla['b_mean'] = res[4];
     tupla['b_example'] = res[5];
-    tupla['result'] = 1;
+    tupla['result'] = 0;
     tupla['viewed'] = 0;
     return tupla;
   }
